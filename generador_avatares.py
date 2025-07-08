@@ -1,5 +1,5 @@
 import re
-import python_avatars as pa
+import py_avataaars as pa
 print(dir(pa))
 
 # Diccionarios ampliados
@@ -49,8 +49,8 @@ tipos_cabello = {
     "dreadlocks largos": pa.TopType.LONG_HAIR_DREADS,
     "frida": pa.TopType.LONG_HAIR_FRIDA,
     "afro": pa.TopType.LONG_HAIR_FRO,
-    "afro cinta": pa.TopType.LONG_HAIR_FRO_BAND,
-    "medio largo": pa.TopType.LONG_HAIR_NOT_TOO_LONG,
+    "afro_cinta": pa.TopType.LONG_HAIR_FRO_BAND,
+    "medio_largo": pa.TopType.LONG_HAIR_NOT_TOO_LONG,
     "mia": pa.TopType.LONG_HAIR_MIA_WALLACE,
     "rapado lados": pa.TopType.LONG_HAIR_SHAVED_SIDES,
     "liso": pa.TopType.LONG_HAIR_STRAIGHT,
@@ -165,12 +165,8 @@ tipos_nariz = {
 
 accesorios = {
     "ninguno": pa.AccessoriesType.DEFAULT,
-    "kurt": pa.AccessoriesType.KURT,
-    "gafas receta 1": pa.AccessoriesType.PRESCRIPTION_01,
-    "gafas receta 2": pa.AccessoriesType.PRESCRIPTION_02,
-    "redondas": pa.AccessoriesType.ROUND,
-    "sol": pa.AccessoriesType.SUNGLASSES,
-    "wayfarers": pa.AccessoriesType.WAYFARERS
+    "gafas_redondas": pa.AccessoriesType.ROUND,
+    "gafas_sol": pa.AccessoriesType.SUNGLASSES,
 }
 
 tipos_ropa = {
@@ -181,8 +177,8 @@ tipos_ropa = {
     "hoodie": pa.ClotheType.HOODIE,
     "overol": pa.ClotheType.OVERALL,
     "camiseta cuello redondo": pa.ClotheType.SHIRT_CREW_NECK,
-    "cuello scoop": pa.ClotheType.SHIRT_SCOOP_NECK,
-    "cuello v": pa.ClotheType.SHIRT_V_NECK
+    "cuello _coop": pa.ClotheType.SHIRT_SCOOP_NECK,
+    "cuello_v": pa.ClotheType.SHIRT_V_NECK
 }
 
 graficos_camiseta = {
@@ -198,157 +194,3 @@ graficos_camiseta = {
     "calavera contorno": pa.ClotheGraphicType.SKULL_OUTLINE,
     "calavera": pa.ClotheGraphicType.SKULL
 }
-
-def mostrar_opciones():
-    print("""
-🎨 OPCIONES DISPONIBLES PARA DESCRIPCIÓN ENTRE PARÉNTESIS
-
-┌──────────────────────────────┬───────────────────────────────────────────────┐
-│        Categoría             │                   Opciones                    │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Estilos de avatar            │ transparente, círculo                         │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Colores de piel              │ negra, trigueña, clara, amarilla, oscura      │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Colores de cabello           │ negro, castaño, rubio, rojo, gris             │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Tipos de cabello/sombrero    │ calvo, liso, rizado, ondulado, dreadlocks     │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Tipo de barba                │ sin barba, barba corta, barba larga, bigote   │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Colores de ropa              │ blanca, negra, roja, azul, gris               │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Tipos de ropa                │ camiseta, hoodie, blazer, camisa              │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Accesorios                   │ gafas redondas, gafas sol, sin accesorios     │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Tipos de nariz               │ predeterminada                                │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Tipos de cejas               │ normales, fruncidas, sorprendidas, uniceja    │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Tipos de ojos                │ normales, corazón, cerrados, llorosos         │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Tipos de boca                │ normal, sonriente, triste, abierta            │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Color de sombrero            │ negro, rojo, azul, blanco, pastel             │
-├──────────────────────────────┼───────────────────────────────────────────────┤
-│ Gráfico en la camiseta       │ murciélago, calavera, pizza, hola             │
-└──────────────────────────────┴───────────────────────────────────────────────┘
-
-📌 Ejemplo válido:
-(Cabello color rojo rizado) (Piel negra) (Barba larga) (Ropa blanca) (Ojos corazón) (Estilo círculo)
-""")
-    
-# Expresiones regulares por bloque
-patrones = {
-    "cabello": re.compile(r'\(cabello color (?P<color>\w+)(?: (?P<tipo>[\w\s]+))?\)', re.IGNORECASE),
-    "piel": re.compile(r'\(piel (?P<color>\w+)\)', re.IGNORECASE),
-    "barba": re.compile(r'\((?P<tipo>barba larga|barba media|barba corta|bigote|sin barba)\)', re.IGNORECASE),
-    "ropa": re.compile(r'\(ropa (?P<color>\w+)\)', re.IGNORECASE),
-    "tipo_ropa": re.compile(r'\(tipo de ropa (?P<tipo>[\w\s]+?)\)', re.IGNORECASE),
-    "accesorios": re.compile(r'\(accesorio (?P<tipo>[\w\s]+?)\)', re.IGNORECASE),
-    "nariz": re.compile(r'\(nariz (?P<tipo>\w+)\)', re.IGNORECASE),
-    "cejas": re.compile(r'\(cejas (?P<tipo>[\w\s]+?)\)', re.IGNORECASE),
-    "ojos": re.compile(r'\(ojos (?P<tipo>[\w\s]+?)\)', re.IGNORECASE),
-    "boca": re.compile(r'\(boca (?P<tipo>[\w\s]+?)\)', re.IGNORECASE),
-    "sombrero_color": re.compile(r'\(sombrero color (?P<color>\w+)\)', re.IGNORECASE),
-    "grafico": re.compile(r'\(grafico (?P<tipo>[\w\s]+?)\)', re.IGNORECASE),
-    "estilo": re.compile(r'\(estilo (?P<tipo>\w+)\)', re.IGNORECASE)
-}
-
-def main():
-    mostrar_opciones()
-    entrada = input("\n✏️ Escribe la descripción del avatar entre paréntesis: ").strip().lower()
-    bloques = re.findall(r"\(.*?\)", entrada)
-
-    # Valores por defecto
-    skin = pa.SkinColor.LIGHT
-    hair_color = pa.HairColor.BROWN
-    top_type = pa.TopType.SHORT_HAIR_SHORT_FLAT
-    facial_hair = pa.FacialHairType.DEFAULT
-    clothe_color = pa.Color.BLACK
-    clothe_type = pa.ClotheType.GRAPHIC_SHIRT
-    accessories = pa.AccessoriesType.DEFAULT
-    nose_type = pa.NoseType.DEFAULT
-    eyebrow_type = pa.EyebrowType.DEFAULT
-    eye_type = pa.EyesType.DEFAULT
-    mouth_type = pa.MouthType.DEFAULT
-    hat_color = pa.Color.BLACK
-    graphic_type = pa.ClotheGraphicType.BAT
-    avatar_style = pa.AvatarStyle.CIRCLE
-
-    errores = []
-
-    for bloque in bloques:
-        if match := patrones["cabello"].fullmatch(bloque):
-            color = match.group("color")
-            tipo = match.group("tipo")
-            hair_color = colores_cabello.get(color, hair_color)
-            if tipo:
-                top_type = tipos_cabello.get(tipo, top_type)
-        elif match := patrones["piel"].fullmatch(bloque):
-            color = match.group("color")
-            skin = colores_piel.get(color, skin)
-        elif match := patrones["barba"].fullmatch(bloque):
-            tipo = match.group("tipo")
-            facial_hair = tipos_barba.get(tipo, facial_hair)
-        elif match := patrones["ropa"].fullmatch(bloque):
-            color = match.group("color")
-            clothe_color = colores_ropa.get(color, clothe_color)
-        elif match := patrones["tipo_ropa"].fullmatch(bloque):
-            tipo = match.group("tipo")
-            clothe_type = tipos_ropa.get(tipo, clothe_type)
-        elif match := patrones["accesorios"].fullmatch(bloque):
-            tipo = match.group("tipo")
-            accessories = accesorios.get(tipo, accessories)
-        elif match := patrones["nariz"].fullmatch(bloque):
-            tipo = match.group("tipo")
-            nose_type = tipos_nariz.get(tipo, nose_type)
-        elif match := patrones["cejas"].fullmatch(bloque):
-            tipo = match.group("tipo")
-            eyebrow_type = tipos_cejas.get(tipo, eyebrow_type)
-        elif match := patrones["ojos"].fullmatch(bloque):
-            tipo = match.group("tipo")
-            eye_type = tipos_ojos.get(tipo, eye_type)
-        elif match := patrones["boca"].fullmatch(bloque):
-            tipo = match.group("tipo")
-            mouth_type = tipos_boca.get(tipo, mouth_type)
-        elif match := patrones["sombrero_color"].fullmatch(bloque):
-            color = match.group("color")
-            hat_color = colores_sombrero.get(color, hat_color)
-        elif match := patrones["grafico"].fullmatch(bloque):
-            tipo = match.group("tipo")
-            graphic_type = graficos_camiseta.get(tipo, graphic_type)
-        elif match := patrones["estilo"].fullmatch(bloque):
-            tipo = match.group("tipo")
-            avatar_style = avatar_styles.get(tipo, avatar_style)
-        else:
-            errores.append(f"Bloque no reconocido: {bloque}")
-
-    if errores:
-        print("\n❌ Se encontraron los siguientes errores:")
-        for err in errores:
-            print("-", err)
-    else:
-        avatar = pa.PyAvataaar(
-            style=avatar_style,
-            skin_color=skin,
-            hair_color=hair_color,
-            top_type=top_type,
-            facial_hair_type=facial_hair,
-            facial_hair_color=hair_color,
-            clothe_color=clothe_color,
-            clothe_type=clothe_type,
-            accessories_type=accessories,
-            nose_type=nose_type,
-            eyebrow_type=eyebrow_type,
-            eye_type=eye_type,
-            mouth_type=mouth_type,
-            hat_color=hat_color,
-            clothe_graphic_type=graphic_type
-        )
-        avatar.render_png_file("avatar_completo.png")
-        print("\n✅ Avatar generado correctamente como 'avatar_completo.png'")
-
-if __name__ == "__main__":
-    main()

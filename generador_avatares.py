@@ -2,7 +2,7 @@ import re
 import py_avataaars as pa
 print(dir(pa))
 
-# Diccionarios ampliados
+# Extended Dictionaries
 avatar_styles = {
     "transparente": pa.AvatarStyle.TRANSPARENT,
     "círculo": pa.AvatarStyle.CIRCLE
@@ -22,10 +22,10 @@ colores_cabello = {
     "negro": pa.HairColor.BLACK,
     "cobrizo": pa.HairColor.AUBURN,
     "rubio": pa.HairColor.BLONDE,
-    "rubio dorado": pa.HairColor.BLONDE_GOLDEN,
+    "rubio_dorado": pa.HairColor.BLONDE_GOLDEN,
     "castaño": pa.HairColor.BROWN,
-    "castaño oscuro": pa.HairColor.BROWN_DARK,
-    "rosado pastel": pa.HairColor.PASTEL_PINK,
+    "castaño_oscuro": pa.HairColor.BROWN_DARK,
+    "rosado_pastel": pa.HairColor.PASTEL_PINK,
     "platinado": pa.HairColor.PLATINUM,
     "rojo": pa.HairColor.RED,
     "gris": pa.HairColor.SILVER_GRAY
@@ -34,7 +34,6 @@ colores_cabello = {
 tipos_cabello = {
     "calvo": pa.TopType.NO_HAIR,
     "parche": pa.TopType.EYE_PATCH,
-    "sombrero": pa.TopType.HAT,
     "hiyab": pa.TopType.HIJAB,
     "turbante": pa.TopType.TURBAN,
     "gorro1": pa.TopType.WINTER_HAT1,
@@ -44,15 +43,15 @@ tipos_cabello = {
     "voluminoso": pa.TopType.LONG_HAIR_BIG_HAIR,
     "bob": pa.TopType.LONG_HAIR_BOB,
     "moño": pa.TopType.LONG_HAIR_BUN,
-    "largo rizado": pa.TopType.LONG_HAIR_CURLY,
-    "largo ondulado": pa.TopType.LONG_HAIR_CURVY,
-    "dreadlocks largos": pa.TopType.LONG_HAIR_DREADS,
+    "largo_rizado": pa.TopType.LONG_HAIR_CURLY,
+    "largo_ondulado": pa.TopType.LONG_HAIR_CURVY,
+    "dreadlocks_largos": pa.TopType.LONG_HAIR_DREADS,
     "frida": pa.TopType.LONG_HAIR_FRIDA,
     "afro": pa.TopType.LONG_HAIR_FRO,
     "afro_cinta": pa.TopType.LONG_HAIR_FRO_BAND,
     "medio_largo": pa.TopType.LONG_HAIR_NOT_TOO_LONG,
     "mia": pa.TopType.LONG_HAIR_MIA_WALLACE,
-    "rapado lados": pa.TopType.LONG_HAIR_SHAVED_SIDES,
+    "rapado_lados": pa.TopType.LONG_HAIR_SHAVED_SIDES,
     "liso": pa.TopType.LONG_HAIR_STRAIGHT,
     "liso2": pa.TopType.LONG_HAIR_STRAIGHT2,
     "mechón": pa.TopType.LONG_HAIR_STRAIGHT_STRAND,
@@ -60,57 +59,30 @@ tipos_cabello = {
     "dreadlocks2": pa.TopType.SHORT_HAIR_DREADS_02,
     "esponjado": pa.TopType.SHORT_HAIR_FRIZZLE,
     "mullet": pa.TopType.SHORT_HAIR_SHAGGY_MULLET,
-    "corto rizado": pa.TopType.SHORT_HAIR_SHORT_CURLY,
-    "corto plano": pa.TopType.SHORT_HAIR_SHORT_FLAT,
-    "corto redondo": pa.TopType.SHORT_HAIR_SHORT_ROUND,
-    "corto ondulado": pa.TopType.SHORT_HAIR_SHORT_WAVED,
-    "corte lados": pa.TopType.SHORT_HAIR_SIDES,
+    "corto_rizado": pa.TopType.SHORT_HAIR_SHORT_CURLY,
+    "corto_plano": pa.TopType.SHORT_HAIR_SHORT_FLAT,
+    "corto_redondo": pa.TopType.SHORT_HAIR_SHORT_ROUND,
+    "corto_ondulado": pa.TopType.SHORT_HAIR_SHORT_WAVED,
+    "corte_lados": pa.TopType.SHORT_HAIR_SIDES,
     "cesar": pa.TopType.SHORT_HAIR_THE_CAESAR,
-    "cesar lado": pa.TopType.SHORT_HAIR_THE_CAESAR_SIDE_PART
+    "cesar_lado": pa.TopType.SHORT_HAIR_THE_CAESAR_SIDE_PART
 }
 
-colores_sombrero = {
-    "negro": pa.Color.BLACK,
-    "azul": pa.Color.BLUE_01,
-    "azul2": pa.Color.BLUE_02,
-    "gris": pa.Color.GRAY_01,
-    "gris claro": pa.Color.GRAY_02,
-    "blanco": pa.Color.WHITE,
-    "rojo": pa.Color.RED,
-    "rosado": pa.Color.PINK,
-    "pastel azul": pa.Color.PASTEL_BLUE,
-    "pastel verde": pa.Color.PASTEL_GREEN,
-    "pastel naranja": pa.Color.PASTEL_ORANGE,
-    "pastel rojo": pa.Color.PASTEL_RED,
-    "pastel amarillo": pa.Color.PASTEL_YELLOW,
-    "heather": pa.Color.HEATHER
-}
-
-# Colores de ropa
 colores_ropa = {
     "negro": pa.Color.BLACK,
     "azul": pa.Color.BLUE_01,
     "azul2": pa.Color.BLUE_02,
     "gris": pa.Color.GRAY_01,
-    "gris claro": pa.Color.GRAY_02,
+    "gris_claro": pa.Color.GRAY_02,
     "blanco": pa.Color.WHITE,
     "rojo": pa.Color.RED,
     "rosado": pa.Color.PINK,
-    "pastel azul": pa.Color.PASTEL_BLUE,
-    "pastel verde": pa.Color.PASTEL_GREEN,
-    "pastel naranja": pa.Color.PASTEL_ORANGE,
-    "pastel rojo": pa.Color.PASTEL_RED,
-    "pastel amarillo": pa.Color.PASTEL_YELLOW,
+    "pastel_azul": pa.Color.PASTEL_BLUE,
+    "pastel_verde": pa.Color.PASTEL_GREEN,
+    "pastel_naranja": pa.Color.PASTEL_ORANGE,
+    "pastel_rojo": pa.Color.PASTEL_RED,
+    "pastel_amarillo": pa.Color.PASTEL_YELLOW,
     "heather": pa.Color.HEATHER
-}
-
-tipos_barba = {
-    "sin barba": pa.FacialHairType.DEFAULT,
-    "barba media": pa.FacialHairType.BEARD_MEDIUM,
-    "barba corta": pa.FacialHairType.BEARD_LIGHT,
-    "barba larga": pa.FacialHairType.BEARD_MAJESTIC,
-    "bigote fino": pa.FacialHairType.MOUSTACHE_FANCY,
-    "bigote grueso": pa.FacialHairType.MOUSTACHE_MAGNUM
 }
 
 tipos_boca = {
@@ -133,7 +105,7 @@ tipos_ojos = {
     "cerrados": pa.EyesType.CLOSE,
     "llorando": pa.EyesType.CRY,
     "mareados": pa.EyesType.DIZZY,
-    "ojos en blanco": pa.EyesType.EYE_ROLL,
+    "ojos_en_blanco": pa.EyesType.EYE_ROLL,
     "felices": pa.EyesType.HAPPY,
     "enamorados": pa.EyesType.HEARTS,
     "laterales": pa.EyesType.SIDE,
@@ -147,20 +119,16 @@ tipos_cejas = {
     "neutras": pa.EyebrowType.DEFAULT,
     "naturales": pa.EyebrowType.DEFAULT_NATURAL,
     "enojadas": pa.EyebrowType.ANGRY,
-    "enojadas naturales": pa.EyebrowType.ANGRY_NATURAL,
+    "enojadas_naturales": pa.EyebrowType.ANGRY_NATURAL,
     "planas": pa.EyebrowType.FLAT_NATURAL,
     "levantadas": pa.EyebrowType.RAISED_EXCITED,
-    "levantadas naturales": pa.EyebrowType.RAISED_EXCITED_NATURAL,
+    "levantadas_naturales": pa.EyebrowType.RAISED_EXCITED_NATURAL,
     "tristes": pa.EyebrowType.SAD_CONCERNED,
-    "tristes naturales": pa.EyebrowType.SAD_CONCERNED_NATURAL,
+    "tristes_naturales": pa.EyebrowType.SAD_CONCERNED_NATURAL,
     "uniceja": pa.EyebrowType.UNI_BROW_NATURAL,
-    "arriba y abajo": pa.EyebrowType.UP_DOWN,
-    "arriba y abajo natural": pa.EyebrowType.UP_DOWN_NATURAL,
+    "arriba_y_abajo": pa.EyebrowType.UP_DOWN,
+    "arriba_y_abajo_natural": pa.EyebrowType.UP_DOWN_NATURAL,
     "fruncidas": pa.EyebrowType.FROWN_NATURAL
-}
-
-tipos_nariz = {
-    "normal": pa.NoseType.DEFAULT
 }
 
 accesorios = {
@@ -170,27 +138,13 @@ accesorios = {
 }
 
 tipos_ropa = {
-    "blazer camisa": pa.ClotheType.BLAZER_SHIRT,
-    "blazer suéter": pa.ClotheType.BLAZER_SWEATER,
-    "cuello suéter": pa.ClotheType.COLLAR_SWEATER,
-    "camiseta gráfica": pa.ClotheType.GRAPHIC_SHIRT,
+    "blazer_camisa": pa.ClotheType.BLAZER_SHIRT,
+    "blazer_suéter": pa.ClotheType.BLAZER_SWEATER,
+    "cuello_suéter": pa.ClotheType.COLLAR_SWEATER,
+    "camiseta_gráfica": pa.ClotheType.GRAPHIC_SHIRT,
     "hoodie": pa.ClotheType.HOODIE,
     "overol": pa.ClotheType.OVERALL,
-    "camiseta cuello redondo": pa.ClotheType.SHIRT_CREW_NECK,
-    "cuello _coop": pa.ClotheType.SHIRT_SCOOP_NECK,
+    "camiseta_cuello_redondo": pa.ClotheType.SHIRT_CREW_NECK,
+    "cuello_scoop": pa.ClotheType.SHIRT_SCOOP_NECK,
     "cuello_v": pa.ClotheType.SHIRT_V_NECK
-}
-
-graficos_camiseta = {
-    "murciélago": pa.ClotheGraphicType.BAT,
-    "cumbia": pa.ClotheGraphicType.CUMBIA,
-    "ciervo": pa.ClotheGraphicType.DEER,
-    "diamante": pa.ClotheGraphicType.DIAMOND,
-    "hola": pa.ClotheGraphicType.HOLA,
-    "pizza": pa.ClotheGraphicType.PIZZA,
-    "resistir": pa.ClotheGraphicType.RESIST,
-    "selena": pa.ClotheGraphicType.SELENA,
-    "oso": pa.ClotheGraphicType.BEAR,
-    "calavera contorno": pa.ClotheGraphicType.SKULL_OUTLINE,
-    "calavera": pa.ClotheGraphicType.SKULL
 }

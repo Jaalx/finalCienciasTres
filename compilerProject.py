@@ -72,6 +72,14 @@ class Compiler:
             if color:
                 avatar.clothe_color = color
 
+        # SKIN COLOR
+        piel = config.get("piel")
+        if piel:
+            color_piel = colores_piel.get(piel)
+            if color_piel:
+                avatar.skin_color = color_piel
+
+
         # MOUTH
         boca = config.get("boca")
         if boca:

@@ -7,12 +7,13 @@ class SemanticAnalyzer:
             "boca": None,
             "ojos": None,
             "cejas": None,
-            "accesorio": None
+            "accesorio": None,
+            "piel": None
         }
 
         self.verbo_atributos_permitidos = {
-            "teñir": {"cabello"},
-            "ajustar": {"ropa"},
+            "teñir": {"cabello","ropa"},
+            "ajustar": {"ropa", "piel", "cabello"},
             "añadir": {"accesorio"},
             "expresar": {"boca", "ojos", "cejas"}
         }
@@ -32,67 +33,22 @@ class SemanticAnalyzer:
 
             if token.type_ == "VERBO":
                 if i + 2 >= len(self.tokens):
-                    raise ValueError("Instrucción incompleta cerca de: " + str(token))
+                    raise ValueError("Incomplete instruction near: " + str(token))
 
                 verbo = self.tokens[i].value
                 atributo = self.tokens[i + 1].value
                 valor = self.tokens[i + 2].value
 
                 if atributo not in self.avatar_config:
-                    raise ValueError(f"Atributo desconocido: {atributo}")
+                    raise ValueError(f"Unknown attribute: {atributo}")
 
                 if atributo not in self.verbo_atributos_permitidos.get(verbo, set()):
-                    raise ValueError(f"El verbo '{verbo}' no puede usarse con el atributo '{atributo}'")
+                    raise ValueError(f"The verb '{verbo}' cannot be used with the attribute '{atributo}'")
 
                 self.avatar_config[atributo] = valor
                 i += 3
                 continue
 
-            raise ValueError(f"Valor inesperado: {token}")
+            raise ValueError(f"Unexpected value: {token}")
 
         return self.avatar_config
-
-# ---------------------
-# SEMANTIC ANALYZER TEST
-# ---------------------
-
-if __name__ == "__main__":
-    from lexicalProject import LexicalAnalyzer
-    from sintaticProject import SyntacticAnalyzer
-
-    def test_semantic_analysis():
-        print("\nPRUEBA CON ENTRADA VÁLIDA:")
-        good_input = """
-        inicio
-        teñir cabello castaño_oscuro;
-        ajustar ropa hoodie;
-        añadir accesorio gafas_redondas;
-        expresar boca sonriente;
-        expresar ojos feliz;
-        final
-        """
-        try:
-            tokens = LexicalAnalyzer.lex(good_input)
-            SyntacticAnalyzer(tokens).parse()
-            config = SemanticAnalyzer(tokens).analyze()
-            print("Análisis semántico exitoso.")
-            print("Configuración:", config)
-        except Exception as e:
-            print("Error:", e)
-
-        print("\nPRUEBA CON ENTRADA INVÁLIDA:")
-        bad_input = """
-        inicio
-        teñir ropa azul;
-        final
-        """
-        try:
-            tokens = LexicalAnalyzer.lex(bad_input)
-            SyntacticAnalyzer(tokens).parse()
-            config = SemanticAnalyzer(tokens).analyze()
-            print("Análisis semántico exitoso.")
-            print("Configuración:", config)
-        except Exception as e:
-            print("Error:", e)
-
-    test_semantic_analysis()

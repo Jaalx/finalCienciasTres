@@ -67,8 +67,8 @@ def example2(compiler_: Compiler):
     ajustar piel clara;
     teñir cabello platinado;
     ajustar cabello afro;
-    teñir ropa gris;
-    ajustar ropa blazer_suéter;
+    teñir ropa rosado;
+    ajustar ropa cuello_v;
     expresar cejas planas;
     expresar ojos cerrados;
     expresar boca neutral;

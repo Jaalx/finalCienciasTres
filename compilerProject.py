@@ -53,24 +53,34 @@ class Compiler:
         )
 
         # HAIR (style and color)
-        cabello = config.get("cabello")
-        if cabello:
-            estilo = tipos_cabello.get(cabello)
-            color = colores_cabello.get(cabello)
+        cabello_color = config.get("cabello_color")
+        cabello_tipo = config.get("cabello_tipo")
+
+        if cabello_tipo:
+            estilo = tipos_cabello.get(cabello_tipo)
             if estilo:
                 avatar.top_type = estilo
+
+        if cabello_color:
+            color = colores_cabello.get(cabello_color)
             if color:
                 avatar.hair_color = color
 
-        # CLOTHING
-        ropa = config.get("ropa")
-        if ropa:
-            tipo = tipos_ropa.get(ropa)
-            color = colores_ropa.get(ropa)
+
+        # CLOTHING (style and color)
+        ropa_color = config.get("ropa_color")
+        ropa_tipo = config.get("ropa_tipo")
+
+        if ropa_tipo:
+            tipo = tipos_ropa.get(ropa_tipo)
             if tipo:
                 avatar.clothe_type = tipo
+
+        if ropa_color:
+            color = colores_ropa.get(ropa_color)
             if color:
                 avatar.clothe_color = color
+
 
         # SKIN COLOR
         piel = config.get("piel")

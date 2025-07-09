@@ -38,11 +38,7 @@ class SemanticAnalyzer:
         while i < len(self.tokens):
             token = self.tokens[i]
 
-            if token.type_ == "SEPARADOR":
-                i += 1
-                continue
-
-            if token.type_ == "KEYWORD":
+            if token.type_ in {"SEPARADOR", "KEYWORD"}:
                 i += 1
                 continue
 
@@ -50,20 +46,62 @@ class SemanticAnalyzer:
                 if i + 2 >= len(self.tokens):
                     raise ValueError("Incomplete instruction near: " + str(token))
 
-                verbo = self.tokens[i].value
+                verbo = token.value
                 atributo = self.tokens[i + 1].value
                 valor = self.tokens[i + 2].value
 
-                if atributo not in self.avatar_config:
+                if atributo not in {"cabello", "ropa", "boca", "ojos", "cejas", "accesorio", "piel"}:
                     raise ValueError(f"Unknown attribute: {atributo}")
 
                 if atributo not in self.verbo_atributos_permitidos.get(verbo, set()):
                     raise ValueError(f"The verb '{verbo}' cannot be used with the attribute '{atributo}'")
 
-                if valor not in self.valores_validos.get(atributo, set()):
-                    raise ValueError(f"Invalid value '{valor}' for attribute '{atributo}'")
+                if atributo == "cabello":
+                    if valor in colores_cabello:
+                        self.avatar_config["cabello_color"] = valor
+                    elif valor in tipos_cabello:
+                        self.avatar_config["cabello_tipo"] = valor
+                    else:
+                        raise ValueError(f"Invalid value '{valor}' for attribute '{atributo}'")
 
-                self.avatar_config[atributo] = valor
+                elif atributo == "ropa":
+                    if valor in colores_ropa:
+                        self.avatar_config["ropa_color"] = valor
+                    elif valor in tipos_ropa:
+                        self.avatar_config["ropa_tipo"] = valor
+                    else:
+                        raise ValueError(f"Invalid value '{valor}' for attribute '{atributo}'")
+
+                elif atributo == "piel":
+                    if valor in colores_piel:
+                        self.avatar_config["piel"] = valor
+                    else:
+                        raise ValueError(f"Invalid value '{valor}' for attribute '{atributo}'")
+
+                elif atributo == "boca":
+                    if valor in tipos_boca:
+                        self.avatar_config["boca"] = valor
+                    else:
+                        raise ValueError(f"Invalid value '{valor}' for attribute '{atributo}'")
+
+                elif atributo == "ojos":
+                    if valor in tipos_ojos:
+                        self.avatar_config["ojos"] = valor
+                    else:
+                        raise ValueError(f"Invalid value '{valor}' for attribute '{atributo}'")
+
+                elif atributo == "cejas":
+                    if valor in tipos_cejas:
+                        self.avatar_config["cejas"] = valor
+                    else:
+                        raise ValueError(f"Invalid value '{valor}' for attribute '{atributo}'")
+
+                elif atributo == "accesorio":
+                    if valor in tipos_accesorios:
+                        self.avatar_config["accesorio"] = valor
+                    else:
+                        raise ValueError(f"Invalid value '{valor}' for attribute '{atributo}'")
+
                 i += 3
                 continue
 

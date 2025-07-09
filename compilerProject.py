@@ -9,7 +9,7 @@ import py_avataaars as pa
 # Import all mapping dictionaries
 from generador_avatares import (
     colores_cabello, tipos_cabello, colores_ropa, tipos_ropa, tipos_boca,
-    tipos_ojos, tipos_cejas, accesorios as tipos_accesorios, colores_piel
+    tipos_ojos, tipos_cejas, tipos_accesorios, colores_piel
 )
 
 class Compiler:

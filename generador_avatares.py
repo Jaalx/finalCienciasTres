@@ -87,6 +87,7 @@ colores_ropa = {
 
 tipos_boca = {
     "neutral": pa.MouthType.DEFAULT,
+    "feliz": pa.MouthType.SMILE,
     "preocupado": pa.MouthType.CONCERNED,
     "incrédulo": pa.MouthType.DISBELIEF,
     "comiendo": pa.MouthType.EATING,
@@ -131,7 +132,7 @@ tipos_cejas = {
     "fruncidas": pa.EyebrowType.FROWN_NATURAL
 }
 
-accesorios = {
+tipos_accesorios = {
     "ninguno": pa.AccessoriesType.DEFAULT,
     "gafas_redondas": pa.AccessoriesType.ROUND,
     "gafas_sol": pa.AccessoriesType.SUNGLASSES,

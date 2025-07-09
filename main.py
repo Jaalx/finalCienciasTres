@@ -30,7 +30,7 @@ from compilerProject import Compiler
 
 # VERB -> teñir
 # Valid attributes:
-#   cabello -> azul, castaño, castaño_oscuro, cobrizo, gris, negro,
+#   cabello -> castaño, castaño_oscuro, cobrizo, gris, negro,
 #              platinado, rojo, rosado_pastel, rubio, rubio_dorado
 #   ropa    -> azul, azul2, blanco, gris, gris_claro, heather, negro,
 #              pastel_amarillo, pastel_azul, pastel_naranja, pastel_rojo,
@@ -66,7 +66,7 @@ def example2(compiler_: Compiler):
     inicio
     ajustar piel clara;
     teñir cabello platinado;
-    ajustar cabello corto_plano;
+    ajustar cabello afro;
     teñir ropa gris;
     ajustar ropa blazer_suéter;
     expresar cejas planas;
@@ -76,25 +76,7 @@ def example2(compiler_: Compiler):
     """
     compiler_.compile(input_text)
 
-def example3(compiler_: Compiler):
-    """Avatar con cabello dreadlocks1 azul, piel bronceada, camiseta cuello redondo pastel naranja, gafas redondas, cejas levantadas_naturales y ojos enamorados."""
-    input_text = """
-    inicio
-    ajustar piel bronceada;
-    teñir cabello azul;
-    ajustar cabello dreadlocks1;
-    teñir ropa pastel_naranja;
-    ajustar ropa camiseta_cuello_redondo;
-    añadir accesorio gafas_redondas;
-    expresar cejas levantadas_naturales;
-    expresar ojos enamorados;
-    expresar boca feliz;
-    final
-    """
-    compiler_.compile(input_text)
-
-
 
 if __name__ == "__main__":
     compiler = Compiler()
-    example3(compiler)
+    example2(compiler)

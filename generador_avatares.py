@@ -87,6 +87,7 @@ colores_ropa = {
 
 tipos_boca = {
     "neutral": pa.MouthType.DEFAULT,
+    "feliz": pa.MouthType.SMILE,
     "preocupado": pa.MouthType.CONCERNED,
     "incrédulo": pa.MouthType.DISBELIEF,
     "comiendo": pa.MouthType.EATING,
